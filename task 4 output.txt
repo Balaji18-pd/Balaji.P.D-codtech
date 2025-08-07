@@ -1,0 +1,2 @@
+Model Accuracy: 100.00%
+Predicted species for input [[5.1, 3.5, 1.4, 0.2]] is: setosa
