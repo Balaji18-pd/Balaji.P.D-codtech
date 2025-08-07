@@ -1,0 +1,65 @@
+import requests
+import matplotlib.pyplot as plt
+from datetime import datetime
+from fpdf import FPDF
+import os
+
+# Step 1: Fetch Bitcoin Price Data (Last 7 days)
+def fetch_bitcoin_data():
+    url = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart"
+    params = {
+        'vs_currency': 'usd',
+        'days': '7',
+        'interval': 'daily'
+    }
+    response = requests.get(url, params=params)
+    data = response.json()
+    return data['prices']
+
+# Step 2: Generate Plot and Save as Image
+def generate_price_chart(prices, output_image="btc_price_chart.png"):
+    dates = [datetime.fromtimestamp(p[0] / 1000) for p in prices]
+    price_values = [p[1] for p in prices]
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(dates, price_values, color='blue', label='BTC Price (USD)')
+    plt.title("Bitcoin Price Over Last 7 Days")
+    plt.xlabel("Date")
+    plt.ylabel("Price (USD)")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.grid(True)
+    plt.legend()
+    plt.savefig(output_image)
+    plt.close()
+
+# Step 3: Create PDF Report
+def create_pdf_report(image_path, output_pdf="bitcoin_report.pdf"):
+    pdf = FPDF()
+    pdf.add_page()
+
+    # Title
+    pdf.set_font("Arial", 'B', 16)
+    pdf.cell(0, 10, "Bitcoin Price Report (Last 7 Days)", ln=True, align='C')
+
+    # Date
+    pdf.set_font("Arial", '', 12)
+    today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    pdf.cell(0, 10, f"Generated on: {today}", ln=True, align='C')
+
+    # Insert image
+    pdf.image(image_path, x=10, y=40, w=190)
+
+    # Save PDF
+    pdf.output(output_pdf)
+    print(f"Report saved as: {output_pdf}")
+
+# Step 4: Run Everything
+if __name__ == "__main__":
+    prices = fetch_bitcoin_data()
+    generate_price_chart(prices)
+    create_pdf_report("btc_price_chart.png")
+
+    # Cleanup image if you want
+    if os.path.exists("btc_price_chart.png"):
+        os.remove("btc_price_chart.png")

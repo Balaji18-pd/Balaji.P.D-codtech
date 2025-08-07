@@ -1,0 +1,33 @@
+  |
+70K|                                                          
+   |                                                    *
+   |                                                *
+   |                                          *    
+   |                                *  *             
+   |                        *                    
+   |              *                         
+   |      *                                
+30K|_______________________________________________________
+     Aug 01    Aug 03    Aug 05    Aug 07                   
+
+
+
+
+--------------------------------------------------------
+|                                                      |
+|    Bitcoin Price Report (Last 7 Days)                |
+|    Generated on: 2025-08-07 14:45:21                 |
+|                                                      |
+|    [Chart Image Inserted Here - Full Width]          |
+|                                                      |
+--------------------------------------------------------
+
+
+
+
+bitcoin_report.pdf     ✅ (main report)
+btc_price_chart.png    🖼️ (temp image, deleted after PDF generation)
+
+
+
+Report saved as: bitcoin_report.pdf
