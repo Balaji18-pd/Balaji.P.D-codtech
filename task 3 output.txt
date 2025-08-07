@@ -1,0 +1,27 @@
+Hi! I'm your NLP chatbot. Type 'quit' to exit.
+> hello
+Hi there!
+
+> my name is Alice
+Hello Alice, how can I help you today?
+
+> how are you?
+I'm doing great. Thanks for asking!
+
+> what is your name?
+I am a chatbot created with Python and NLP.
+
+> where do you live?
+I'm in the cloud. No fixed address!
+
+> who created you?
+I was created by a Python developer using NLTK.
+
+> I'm doing good
+Alright, great!
+
+> sorry I was late
+No problem at all.
+
+> quit
+Goodbye! Have a nice day.
